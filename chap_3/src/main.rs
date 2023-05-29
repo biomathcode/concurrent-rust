@@ -3,6 +3,8 @@ use std::thread;
 use std::sync::atomic::AtomicU32;
 use std::sync::atomic::Ordering::Relaxed;
 
+use chap_3::example;
+
 static X: AtomicU32 = AtomicU32::new(0);
 
 fn a() {
@@ -27,5 +29,7 @@ fn main() {
     });
 
     b();
+    example();
+
     println!("Hello, world!");
 }
