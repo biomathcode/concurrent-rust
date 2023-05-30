@@ -15,7 +15,7 @@ pub fn example() {
     });
     while !READY.load(Acquire) {
         // .. is visible after this loads `true`.
-        thread::sleep(Duration::from_millis(100));
+        thread::sleep(Duration::from_millis(1000));
         println!("waiting...");
     }
     println!("{}", DATA.load(Relaxed));
