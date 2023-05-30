@@ -53,7 +53,7 @@ impl<T> SpinLock<T> {
         }
     }
 
-    pub fn lock<'a>(&'a self) -> Guard<T> {
+    pub fn lock(&self) -> Guard<T> {
         while self.locked.swap(true, Acquire) {
             // hint may be at compile time
             // the hint will tell the processor that we are spinning while waiting for something to change
@@ -79,7 +79,7 @@ fn main() {
             let mut g = x.lock();
             g.push(2);
             g.push(2);
-        })
+        });
     });
 
     let g = x.lock();
